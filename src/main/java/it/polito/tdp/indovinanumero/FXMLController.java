@@ -49,7 +49,7 @@ public class FXMLController {
     	layoutTentativo.setDisable(false);
     	txtRisultato.clear();
     	txtRimasti.setText(Integer.toString(this.model.getTMAX()));
-
+    	txtTentativi.clear(); 
     }
 
     @FXML
@@ -60,9 +60,11 @@ public class FXMLController {
     	try {
     		tentativo = Integer.parseInt(ts);
     	} catch (NumberFormatException e) {
-    		txtRisultato.appendText("Devi inserire un numero!\n");
+    		txtRisultato.appendText("Devi inserire un numero intero!\n");
+    		txtTentativi.clear(); //*****************
     		return;
-    	}
+      	}
+    	
     	
     	int risultato = -1;
     	try {
@@ -77,6 +79,7 @@ public class FXMLController {
     	
     	if(risultato == 0) {
     		txtRisultato.appendText("Hai vinto!\nI tuoi tentativo sono stati " + model.getTentativiFatti() + "\n");
+    		
     	}else if(risultato == -1) {
     		txtRisultato.appendText("Tentativo troppo BASSO\n");
     	}else {

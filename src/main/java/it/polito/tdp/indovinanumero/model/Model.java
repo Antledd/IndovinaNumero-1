@@ -26,7 +26,7 @@ public class Model {
     	this.inGioco = true; 
     	this.tentativi = new HashSet<Integer>(); //HashSet:controlla se in un contenitore Set 
     											//figura già un determinato elemento)
-	}
+   	}
 	
 	public int tentativo(int tentativo) {
 		//controllo se la partita è in corso
@@ -36,7 +36,7 @@ public class Model {
 		
 		//controllo l'input
 		if(!tentativoValido(tentativo)) {
-			throw new InvalidParameterException("Devi inserire un numero che non hai ancora utilizzato tra 1 e "+ NMAX + "\n");
+			throw new InvalidParameterException("Hai ripetuto uno dei numeri tra 1 e "+ NMAX + "\n");
 		}
 		
 		//il tentativo è valido -> possiamo "provarlo"
