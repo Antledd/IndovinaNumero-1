@@ -20,6 +20,7 @@ public class Model {
 	}
 	
 	public void nuovaPartita() {
+		
 	  	//gestione dell'inizio di una nuova partita - Logica del gioco
     	this.segreto = (int)(Math.random() * NMAX) + 1;
     	this.tentativiFatti = 0;
@@ -36,9 +37,10 @@ public class Model {
 		
 		//controllo l'input
 		if(!tentativoValido(tentativo)) {
-			throw new InvalidParameterException("Hai ripetuto uno dei numeri tra 1 e "+ NMAX + "\n");
+					//throw new InvalidParameterException("Hai ripetuto uno dei numeri tra 1 e "+ NMAX + "\n");
+			throw new InvalidParameterException("Numero o ripetuto o non compreso tra 1 e " + NMAX +"\n");
 		}
-		
+
 		//il tentativo è valido -> possiamo "provarlo"
     	this.tentativiFatti ++;
     	
@@ -67,7 +69,7 @@ public class Model {
 		else {
 			if(this.tentativi.contains(tentativo)) { //vedi HashSet di sopra
 				return false;// mi dice che ho ripetuto lo stesso numero
-			}
+		}
 			return true;
 		}
 	}

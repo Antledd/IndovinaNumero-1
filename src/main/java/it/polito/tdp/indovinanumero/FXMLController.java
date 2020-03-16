@@ -50,6 +50,7 @@ public class FXMLController {
     	txtRisultato.clear();
     	txtRimasti.setText(Integer.toString(this.model.getTMAX()));
     	txtTentativi.clear(); 
+    	btnProva.setDisable(false);
     }
 
     @FXML
@@ -78,7 +79,10 @@ public class FXMLController {
     	}
     	
     	if(risultato == 0) {
+    		txtRisultato.clear();
     		txtRisultato.appendText("Hai vinto!\nI tuoi tentativo sono stati " + model.getTentativiFatti() + "\n");
+    		
+    		btnProva.setDisable(true); //****************
     		
     	}else if(risultato == -1) {
     		txtRisultato.appendText("Tentativo troppo BASSO\n");
@@ -87,6 +91,12 @@ public class FXMLController {
     	}
     	
     	txtRimasti.setText(Integer.toString(this.model.getTMAX() - this.model.getTentativiFatti()));
+    	
+    	if(this.model.getTMAX()-this.model.getTentativiFatti() == 0) { //**************
+    		txtRisultato.clear();
+    		txtRisultato.appendText("Hai perso\nIl numero segreto era: "+ model.getSegreto());  //*************
+    	    btnProva.setDisable(true); //*******
+    	}
     }
 
     @FXML
